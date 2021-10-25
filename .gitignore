@@ -1,0 +1,7 @@
+
+target/
+dbt_modules/
+logs/
+dbt-env/
+env/
+__pycache__/
