@@ -1,5 +1,15 @@
 Welcome to your new dbt project!
 
+### Set up dbt
+
+https://docs.getdbt.com/dbt-cli/installation
+
+Once dbt is installed in some fashion, make sure to set up the profile defined in dbt_project.yml.
+
+Run the following to make sure things are working
+> dbt debug
+
+
 ### Using the starter project
 
 Try running the following commands:
