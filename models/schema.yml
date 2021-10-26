@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: customers
+    columns:
+      # Make sure customer_id is a primary key pretty much.
+      # Run with `dbt test`
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+      # Make sure the foreign key actually points to something
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
