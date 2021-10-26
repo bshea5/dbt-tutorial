@@ -3,24 +3,32 @@ version: 2
 # Let's prepare som tests!
 models:
   - name: customers
+    description: One record per customer with fields from orders
     columns:
       # Make sure customer_id is a primary key pretty much.
       # Run with `dbt test`
       - name: customer_id
+        description: Primary key of the model
         tests:
           - unique
           - not_null
+      - name: first_order_date
+        description: NULL when a customer has not yet placed an order.
 
   - name: stg_customers
+    description: This model cleans up customer data
     columns:
       - name: customer_id
+        description: Primary key
         tests:
           - unique
           - not_null
 
   - name: stg_orders
+    description: This model cleans up order data
     columns:
       - name: order_id
+        description: Primary key
         tests:
           - unique
           - not_null
