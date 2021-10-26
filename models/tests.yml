@@ -1,5 +1,6 @@
 version: 2
 
+# Let's prepare som tests!
 models:
   - name: customers
     columns:
